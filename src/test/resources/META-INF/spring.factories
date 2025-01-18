@@ -1,0 +1,4 @@
+org.springframework.test.context.ContextCustomizerFactory = \
+    com.xcopilot.investor.config.\
+    SqlTestContainersSpringContextCustomizerFactory,com.xcopilot.investor.\
+    config.RedisTestContainersSpringContextCustomizerFactory
