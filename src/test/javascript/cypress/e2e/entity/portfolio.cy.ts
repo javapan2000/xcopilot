@@ -169,9 +169,9 @@ describe('Portfolio e2e test', () => {
       cy.get(`[data-cy="totalValue"]`).type('16862.57');
       cy.get(`[data-cy="totalValue"]`).should('have.value', '16862.57');
 
-      cy.get(`[data-cy="lastUpdated"]`).type('2025-01-19T01:20');
+      cy.get(`[data-cy="lastUpdated"]`).type('2025-01-18T13:25');
       cy.get(`[data-cy="lastUpdated"]`).blur();
-      cy.get(`[data-cy="lastUpdated"]`).should('have.value', '2025-01-19T01:20');
+      cy.get(`[data-cy="lastUpdated"]`).should('have.value', '2025-01-18T13:25');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

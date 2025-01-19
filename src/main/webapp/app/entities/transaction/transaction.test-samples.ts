@@ -7,7 +7,7 @@ export const sampleWithRequiredData: ITransaction = {
   transactionType: 'REBALANCE',
   quantity: 2419.29,
   price: 23189.74,
-  timestamp: dayjs('2025-01-18T22:44'),
+  timestamp: dayjs('2025-01-18T10:51'),
 };
 
 export const sampleWithPartialData: ITransaction = {
@@ -15,7 +15,7 @@ export const sampleWithPartialData: ITransaction = {
   transactionType: 'BUY',
   quantity: 26845.95,
   price: 1969.88,
-  timestamp: dayjs('2025-01-18T13:08'),
+  timestamp: dayjs('2025-01-18T01:15'),
 };
 
 export const sampleWithFullData: ITransaction = {
@@ -23,14 +23,14 @@ export const sampleWithFullData: ITransaction = {
   transactionType: 'BUY',
   quantity: 25161.85,
   price: 19965.99,
-  timestamp: dayjs('2025-01-18T21:32'),
+  timestamp: dayjs('2025-01-18T09:39'),
 };
 
 export const sampleWithNewData: NewTransaction = {
   transactionType: 'REBALANCE',
   quantity: 29048,
   price: 31394.35,
-  timestamp: dayjs('2025-01-18T19:43'),
+  timestamp: dayjs('2025-01-18T07:50'),
   id: null,
 };
 

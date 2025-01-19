@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export default class FindLanguageFromKeyPipe implements PipeTransform {
   private readonly languages: Record<string, { name: string; rtl?: boolean }> = {
     en: { name: 'English' },
-    'zh-cn': { name: '中文（简体）' },
     // jhipster-needle-i18n-language-key-pipe - JHipster will add/remove languages in this object
   };
 

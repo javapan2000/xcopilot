@@ -17,7 +17,7 @@ export const sampleWithFullData: IPortfolio = {
   name: 'accidentally coolly t-shirt',
   description: 'unnecessarily woot stiff',
   totalValue: 23388.96,
-  lastUpdated: dayjs('2025-01-18T17:10'),
+  lastUpdated: dayjs('2025-01-18T05:15'),
 };
 
 export const sampleWithNewData: NewPortfolio = {
