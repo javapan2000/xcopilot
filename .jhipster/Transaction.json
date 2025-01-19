@@ -1,0 +1,43 @@
+{
+  "annotations": {
+    "changelogDate": "20250119050251"
+  },
+  "applications": ["xcopilot"],
+  "fields": [
+    {
+      "fieldName": "transactionType",
+      "fieldType": "TransactionType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "BUY,SELL,REBALANCE"
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Transaction",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityField": "symbol",
+      "otherEntityName": "holding",
+      "otherEntityRelationshipName": "transactions",
+      "relationshipName": "holding",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

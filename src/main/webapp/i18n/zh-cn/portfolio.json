@@ -1,0 +1,29 @@
+{
+  "xcopilotApp": {
+    "portfolio": {
+      "home": {
+        "title": "Portfolios",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Portfolio",
+        "createOrEditLabel": "创建或编辑 Portfolio",
+        "notFound": "No Portfolios found"
+      },
+      "created": "Portfolio {{ param }} 创建成功",
+      "updated": "Portfolio {{ param }} 更新成功",
+      "deleted": "Portfolio {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Portfolio {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Portfolio"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "totalValue": "Total Value",
+      "lastUpdated": "Last Updated",
+      "holdings": "Holdings",
+      "owner": "Owner"
+    }
+  }
+}

@@ -7,7 +7,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.xcopilot.investor.IntegrationTest;
+import com.xcopilot.investor.repository.UserRepository;
 import com.xcopilot.investor.security.AuthoritiesConstants;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -27,6 +29,9 @@ import org.springframework.transaction.annotation.Transactional;
 class AccountResourceIT {
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private MockMvc restAccountMockMvc;
 
     @Autowired
@@ -34,6 +39,12 @@ class AccountResourceIT {
 
     @Autowired
     ClientRegistration clientRegistration;
+
+    @AfterEach
+    public void cleanup() {
+        // Remove syncUserWithIdp users
+        userRepository.deleteAll();
+    }
 
     @Test
     @Transactional
@@ -46,6 +57,7 @@ class AccountResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.login").value(TEST_USER_LOGIN))
+            .andExpect(jsonPath("$.email").value("john.doe@jhipster.com"))
             .andExpect(jsonPath("$.authorities").value(AuthoritiesConstants.ADMIN));
     }
 

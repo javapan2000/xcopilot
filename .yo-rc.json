@@ -14,12 +14,13 @@
     "enableHibernateCache": true,
     "enableSwaggerCodegen": false,
     "enableTranslation": true,
-    "entities": [],
+    "entities": ["UserExtra", "Portfolio", "Holding", "Transaction"],
     "gitCompany": "",
     "iaCTools": ["bicep", "terraform"],
     "jhiPrefix": "jhi",
     "jhipsterVersion": "8.8.0",
     "languages": ["en", "zh-cn"],
+    "lastLiquibaseTimestamp": 1737262971000,
     "messageBroker": false,
     "nativeLanguage": "en",
     "packageFolder": "com/xcopilot/investor",
@@ -27,14 +28,43 @@
     "prodDatabaseType": "postgresql",
     "searchEngine": false,
     "serverPort": 8080,
-    "serviceDiscoveryType": false,
+    "serviceDiscoveryType": "no",
     "skipUserManagement": true,
-    "testFrameworks": ["cucumber", "cypress"],
+    "syncUserWithIdp": true,
+    "testFrameworks": ["cypress"],
     "useSass": true,
     "websocket": false,
     "withAdminUi": true
   },
-  "git-company": "javapan2000",
-  "git-provider": "GitHub",
-  "repository-name": "xcopilot"
+  "git-company": {
+    "0": "j",
+    "1": "a",
+    "2": "v",
+    "3": "a",
+    "4": "p",
+    "5": "a",
+    "6": "n",
+    "7": "2",
+    "8": "0",
+    "9": "0",
+    "10": "0"
+  },
+  "git-provider": {
+    "0": "G",
+    "1": "i",
+    "2": "t",
+    "3": "H",
+    "4": "u",
+    "5": "b"
+  },
+  "repository-name": {
+    "0": "x",
+    "1": "c",
+    "2": "o",
+    "3": "p",
+    "4": "i",
+    "5": "l",
+    "6": "o",
+    "7": "t"
+  }
 }

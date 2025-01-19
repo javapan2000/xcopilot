@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (transaction(); as transactionRef) {
+      <div>
+        <h2 data-cy="transactionDetailsHeading"><span jhiTranslate="xcopilotApp.transaction.detail.title">Transaction</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ transactionRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.transaction.transactionType">Transaction Type</span></dt>
+          <dd>
+            <span [jhiTranslate]="'xcopilotApp.TransactionType.' + (transactionRef.transactionType ?? 'null')">{{
+              { null: '', BUY: 'BUY', SELL: 'SELL', REBALANCE: 'REBALANCE' }[transactionRef.transactionType ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.transaction.quantity">Quantity</span></dt>
+          <dd>
+            <span>{{ transactionRef.quantity }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.transaction.price">Price</span></dt>
+          <dd>
+            <span>{{ transactionRef.price }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.transaction.timestamp">Timestamp</span></dt>
+          <dd>
+            <span>{{ transactionRef.timestamp | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.transaction.holding">Holding</span></dt>
+          <dd>
+            @if (transaction()!.holding) {
+              <div>
+                <a [routerLink]="['/holding', transaction()!.holding?.id, 'view']">{{ transactionRef.holding?.symbol }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/transaction', transactionRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

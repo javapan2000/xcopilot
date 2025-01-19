@@ -1,0 +1,46 @@
+{
+  "annotations": {
+    "changelogDate": "20250119050249"
+  },
+  "applications": ["xcopilot"],
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalValue",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "lastUpdated",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Portfolio",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "holding",
+      "otherEntityRelationshipName": "portfolio",
+      "relationshipName": "holdings",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "fullName",
+      "otherEntityName": "userExtra",
+      "otherEntityRelationshipName": "portfolios",
+      "relationshipName": "owner",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

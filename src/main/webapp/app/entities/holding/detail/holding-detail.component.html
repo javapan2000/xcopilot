@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (holding(); as holdingRef) {
+      <div>
+        <h2 data-cy="holdingDetailsHeading"><span jhiTranslate="xcopilotApp.holding.detail.title">Holding</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ holdingRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.holding.symbol">Symbol</span></dt>
+          <dd>
+            <span>{{ holdingRef.symbol }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.holding.quantity">Quantity</span></dt>
+          <dd>
+            <span>{{ holdingRef.quantity }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.holding.averageCost">Average Cost</span></dt>
+          <dd>
+            <span>{{ holdingRef.averageCost }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.holding.currentPrice">Current Price</span></dt>
+          <dd>
+            <span>{{ holdingRef.currentPrice }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.holding.portfolio">Portfolio</span></dt>
+          <dd>
+            @if (holding()!.portfolio) {
+              <div>
+                <a [routerLink]="['/portfolio', holding()!.portfolio?.id, 'view']">{{ holdingRef.portfolio?.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/holding', holdingRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

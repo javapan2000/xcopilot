@@ -7,7 +7,12 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "adminAuthority": "Authority",
+        "userExtra": "User Extra",
+        "portfolio": "Portfolio",
+        "holding": "Holding",
+        "transaction": "Transaction"
       },
       "account": {
         "main": "Account",

@@ -1,0 +1,27 @@
+{
+  "xcopilotApp": {
+    "userExtra": {
+      "home": {
+        "title": "User Extras",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 User Extra",
+        "createOrEditLabel": "创建或编辑 User Extra",
+        "notFound": "No User Extras found"
+      },
+      "created": "User Extra {{ param }} 创建成功",
+      "updated": "User Extra {{ param }} 更新成功",
+      "deleted": "User Extra {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 User Extra {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "User Extra"
+      },
+      "id": "ID",
+      "fullName": "Full Name",
+      "phoneNumber": "Phone Number",
+      "user": "User",
+      "portfolios": "Portfolios"
+    }
+  }
+}

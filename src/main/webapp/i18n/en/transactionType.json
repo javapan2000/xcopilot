@@ -1,0 +1,10 @@
+{
+  "xcopilotApp": {
+    "TransactionType": {
+      "null": "",
+      "BUY": "BUY",
+      "SELL": "SELL",
+      "REBALANCE": "REBALANCE"
+    }
+  }
+}

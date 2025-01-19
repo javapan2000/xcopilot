@@ -1,0 +1,48 @@
+{
+  "annotations": {
+    "changelogDate": "20250119050250"
+  },
+  "applications": ["xcopilot"],
+  "fields": [
+    {
+      "fieldName": "symbol",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "averageCost",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "currentPrice",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "name": "Holding",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "transaction",
+      "otherEntityRelationshipName": "holding",
+      "relationshipName": "transactions",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "portfolio",
+      "otherEntityRelationshipName": "holdings",
+      "relationshipName": "portfolio",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

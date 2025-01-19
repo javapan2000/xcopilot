@@ -1,0 +1,7 @@
+export enum TransactionType {
+  BUY = 'BUY',
+
+  SELL = 'SELL',
+
+  REBALANCE = 'REBALANCE',
+}

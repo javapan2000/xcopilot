@@ -78,6 +78,18 @@ public class CacheConfiguration {
     @Bean
     public JCacheManagerCustomizer cacheManagerCustomizer(javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration) {
         return cm -> {
+            createCache(cm, com.xcopilot.investor.repository.UserRepository.USERS_BY_LOGIN_CACHE, jcacheConfiguration);
+            createCache(cm, com.xcopilot.investor.repository.UserRepository.USERS_BY_EMAIL_CACHE, jcacheConfiguration);
+            createCache(cm, com.xcopilot.investor.domain.User.class.getName(), jcacheConfiguration);
+            createCache(cm, com.xcopilot.investor.domain.Authority.class.getName(), jcacheConfiguration);
+            createCache(cm, com.xcopilot.investor.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            createCache(cm, com.xcopilot.investor.domain.UserExtra.class.getName(), jcacheConfiguration);
+            createCache(cm, com.xcopilot.investor.domain.UserExtra.class.getName() + ".portfolios", jcacheConfiguration);
+            createCache(cm, com.xcopilot.investor.domain.Portfolio.class.getName(), jcacheConfiguration);
+            createCache(cm, com.xcopilot.investor.domain.Portfolio.class.getName() + ".holdings", jcacheConfiguration);
+            createCache(cm, com.xcopilot.investor.domain.Holding.class.getName(), jcacheConfiguration);
+            createCache(cm, com.xcopilot.investor.domain.Holding.class.getName() + ".transactions", jcacheConfiguration);
+            createCache(cm, com.xcopilot.investor.domain.Transaction.class.getName(), jcacheConfiguration);
             // jhipster-needle-redis-add-entry
         };
     }

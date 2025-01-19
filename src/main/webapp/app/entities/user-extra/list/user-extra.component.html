@@ -1,0 +1,101 @@
+<div>
+  <h2 id="page-heading" data-cy="UserExtraHeading">
+    <span jhiTranslate="xcopilotApp.userExtra.home.title">User Extras</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="xcopilotApp.userExtra.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-user-extra"
+        [routerLink]="['/user-extra/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="xcopilotApp.userExtra.home.createLabel">Create a new User Extra</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (userExtras().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="xcopilotApp.userExtra.home.notFound">No User Extras found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fullName">
+              <div class="d-flex">
+                <span jhiTranslate="xcopilotApp.userExtra.fullName">Full Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="phoneNumber">
+              <div class="d-flex">
+                <span jhiTranslate="xcopilotApp.userExtra.phoneNumber">Phone Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="user.login">
+              <div class="d-flex">
+                <span jhiTranslate="xcopilotApp.userExtra.user">User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (userExtra of userExtras(); track trackId(userExtra)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/user-extra', userExtra.id, 'view']">{{ userExtra.id }}</a>
+              </td>
+              <td>{{ userExtra.fullName }}</td>
+              <td>{{ userExtra.phoneNumber }}</td>
+              <td>
+                {{ userExtra.user?.login }}
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/user-extra', userExtra.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/user-extra', userExtra.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(userExtra)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

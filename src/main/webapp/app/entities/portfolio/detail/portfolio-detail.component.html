@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (portfolio(); as portfolioRef) {
+      <div>
+        <h2 data-cy="portfolioDetailsHeading"><span jhiTranslate="xcopilotApp.portfolio.detail.title">Portfolio</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ portfolioRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.portfolio.name">Name</span></dt>
+          <dd>
+            <span>{{ portfolioRef.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.portfolio.description">Description</span></dt>
+          <dd>
+            <span>{{ portfolioRef.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.portfolio.totalValue">Total Value</span></dt>
+          <dd>
+            <span>{{ portfolioRef.totalValue }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.portfolio.lastUpdated">Last Updated</span></dt>
+          <dd>
+            <span>{{ portfolioRef.lastUpdated | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="xcopilotApp.portfolio.owner">Owner</span></dt>
+          <dd>
+            @if (portfolio()!.owner) {
+              <div>
+                <a [routerLink]="['/user-extra', portfolio()!.owner?.id, 'view']">{{ portfolioRef.owner?.fullName }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/portfolio', portfolioRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
