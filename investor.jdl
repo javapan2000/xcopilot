@@ -1,0 +1,75 @@
+application {
+  config {
+    baseName xcopilot
+    applicationType monolith
+    packageName com.xcopilot.investor
+    authenticationType oauth2
+    databaseType sql
+    devDatabaseType h2Disk
+    prodDatabaseType postgresql
+    buildTool maven
+
+    cacheProvider redis
+    enableHibernateCache true
+    serviceDiscoveryType no
+    websocket false
+
+    testFrameworks [cypress]
+  }
+
+  entities *
+}
+
+enum TransactionType {
+  BUY,
+  SELL,
+  REBALANCE
+}
+
+entity UserExtra {
+  fullName String required
+  phoneNumber String
+}
+
+entity Portfolio {
+  name String required
+  description String
+  totalValue BigDecimal
+  lastUpdated Instant
+}
+
+entity Holding {
+  symbol String required
+  quantity BigDecimal required
+  averageCost BigDecimal required
+  currentPrice BigDecimal
+}
+
+entity Transaction {
+  transactionType TransactionType required
+  quantity BigDecimal required
+  price BigDecimal required
+  timestamp Instant required
+}
+
+relationship OneToOne {
+  // "with builtInEntity" tells JHipster to use the built-in User entity
+  UserExtra{user(login)} to User with builtInEntity
+}
+
+relationship OneToMany {
+  UserExtra{portfolios} to Portfolio{owner(fullName)}
+  Portfolio{holdings} to Holding{portfolio(name)}
+  Holding{transactions} to Transaction{holding(symbol)}
+}
+
+/*
+ * For JHipster 8, use the "pagination" keyword (not "paginate").
+ * Placing each entity on its own line can avoid parser glitches.
+ */
+paginate Portfolio with infinite-scroll
+paginate Holding with infinite-scroll
+paginate Transaction with infinite-scroll
+
+// Enable service and DTO generation for these entities
+service UserExtra, Portfolio, Holding, Transaction with serviceImpl
